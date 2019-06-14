@@ -1,7 +1,7 @@
 FROM roangzero1/factorio-mod:luarocks5.3-alpine as base
 
-LABEL "com.github.actions.name"="Factorio Mod luacheck"
-LABEL "com.github.actions.description"="Run a Factorio mod through luacheck"
+LABEL "com.github.actions.name"="Factorio Mod packaging"
+LABEL "com.github.actions.description"="Create a zip file from a Factorio mod source."
 LABEL "com.github.actions.icon"="package"
 LABEL "com.github.actions.color"="purple"
 
