@@ -15,3 +15,7 @@ action "package mod" {
   uses = "Roang-zero1/factorio-mod-package@main"
 }
 ```
+
+## Sample Workflow
+
+A sample workflow that uses this action can be found at [Roang-zero1/factorio-mod-actions](https://github.com/Roang-zero1/factorio-mod-actions/blob/master/sample/main.workflow)
