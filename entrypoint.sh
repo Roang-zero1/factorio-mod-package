@@ -19,21 +19,20 @@ mkdir -p $OUTPUT_DIR
 
 find . \
   -type d \
-  \(\
-    -iname 'locale' -o \
-    -iname 'sounds' \
-  \)\
+  \( \
+  -iname 'locale' -o \
+  -iname 'sounds' \
+  \) \
   -exec cp -r --parents \{\} $OUTPUT_DIR \;
-
 
 find . \
   -type f \
-  \(\
-    -iname '*.md'  -o \
-    -iname '*.txt' -o \
-    -iname 'info.json' -o \
-    -iname 'thumbnail.png' \
-  \)\
+  \( \
+  -iname '*.md' -o \
+  -iname '*.txt' -o \
+  -iname 'info.json' -o \
+  -iname 'thumbnail.png' \
+  \) \
   -exec cp --parents \{\} $OUTPUT_DIR \;
 
 find . \
