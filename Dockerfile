@@ -5,8 +5,8 @@ LABEL "com.github.actions.description"="Create a zip file from a Factorio mod so
 LABEL "com.github.actions.icon"="package"
 LABEL "com.github.actions.color"="purple"
 
-LABEL "repository"="https://github.com/Roang-zero1/factorio-mod-actions"
-LABEL "homepage"="https://github.com/Roang-zero1/factorio-mod-actions"
+LABEL "repository"="https://github.com/Roang-zero1/factorio-mod-package"
+LABEL "homepage"="https://github.com/Roang-zero1/factorio-mod-package"
 LABEL "maintainer"="Roang_zero1 <lucas@brandstaetter.tech>"
 
 COPY entrypoint.sh /entrypoint.sh
