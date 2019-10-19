@@ -1,0 +1,9 @@
+name: "Factorio Mod packaging"
+description: "Create a zip file from a Factorio mod source."
+author: "Roang_zero1 <lucas@brandstaetter.tech>"
+branding:
+  icon: "package"
+  color: "orange"
+runs:
+  using: "docker"
+  image: "Dockerfile"
