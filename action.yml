@@ -4,6 +4,14 @@ author: "Roang_zero1 <lucas@brandstaetter.tech>"
 branding:
   icon: "package"
   color: "orange"
+inputs:
+  mod_base_dir:
+    description: "Specify the directory which includes info.json."
+    required: false
+    default: "."
+outputs:
+  asset_path:
+    description: "Created zip file path"
 runs:
   using: "docker"
   image: "Dockerfile"
