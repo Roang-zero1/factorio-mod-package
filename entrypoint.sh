@@ -2,6 +2,12 @@
 
 cd $INPUT_MOD_BASE_DIR
 
+retVal=$?
+if [ $retVal -ne 0 ]; then
+  echo "::error file=entrypoint.sh,line=6::Failed to switch to provided working directory"
+  exit 1
+fi
+
 export PACKAGE_NAME=$(jq -r .name info.json)
 export PACKAGE_VERSION=$(jq -r .version info.json)
 export PACKAGE_FULL_NAME=$PACKAGE_NAME\_$PACKAGE_VERSION
