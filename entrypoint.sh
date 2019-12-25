@@ -18,8 +18,6 @@ echo "Creating Package for $PACKAGE_NAME in version $PACKAGE_VERSION"
 export BUILD_DIR=.build
 export OUTPUT_DIR=$BUILD_DIR/$PACKAGE_FULL_NAME
 
-export PNG_FILES="$(find ./graphics -iname '*.png' -type f)"
-
 echo 'Copying package files'
 
 rm -rf .build dist
