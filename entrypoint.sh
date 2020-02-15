@@ -29,26 +29,28 @@ for F in $(find . \
   -iname 'locale' -o \
   -iname 'sounds' \
   \)); do
-  cp -r --parents $F $OUTPUT_DIR;
+  cp -r --parents $F $OUTPUT_DIR
 done
 
-for F in $(find . \
-  -iname '*.md' -o \
-  -iname '*.txt' -o \
-  -iname 'info.json' -o \
-  -iname 'LICENSE' -o
-  -iname 'thumbnail.png'); do
-  cp --parents $F $OUTPUT_DIR;
+for F in $(
+  find . \
+    -iname '*.md' -o \
+    -iname '*.txt' -o \
+    -iname 'info.json' -o \
+    -iname 'LICENSE' -o
+  -iname 'thumbnail.png'
+); do
+  cp --parents $F $OUTPUT_DIR
 done
 
 for F in $(find . \
   -iname '*.lua' -type f -not -path \"./.*/*\"); do
-  cp --parents $F $OUTPUT_DIR;
+  cp --parents $F $OUTPUT_DIR
 done
 
 for F in $(find ./graphics \
   -iname '*.png' -type f); do
-  cp --parents $F $OUTPUT_DIR;
+  cp --parents $F $OUTPUT_DIR
 done
 
 ORIGIN=$(pwd)
