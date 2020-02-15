@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v1.2.0
+
+- Add option to change the working directory (mod_base_dir)
+- Improve iteration of files
+
 ## v1.1.0
 
 Update Action to v2 format

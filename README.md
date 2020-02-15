@@ -21,6 +21,12 @@ jobs:
         uses: Roang-zero1/factorio-mod-package@master
 ```
 
+## Inputs
+
+### `mod_base_dir`
+
+Path to the directory where package creation will be executed in.
+
 ## Sample Workflow
 
 A sample workflow that uses this action can be found at [Roang-zero1/factorio-mod-actions](https://github.com/Roang-zero1/factorio-mod-actions/blob/master/sample/push-check-release.yml)
