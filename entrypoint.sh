@@ -36,6 +36,7 @@ for F in $(find . \
   -iname '*.md' -o \
   -iname '*.txt' -o \
   -iname 'info.json' -o \
+  -iname 'LICENSE' -o
   -iname 'thumbnail.png'); do
   cp --parents $F $OUTPUT_DIR;
 done
