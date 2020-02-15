@@ -1,5 +1,13 @@
 #!/bin/sh
 
+cd $INPUT_MOD_BASE_DIR
+
+retVal=$?
+if [ $retVal -ne 0 ]; then
+  echo "::error file=entrypoint.sh,line=6::Failed to switch to provided working directory"
+  exit 1
+fi
+
 export PACKAGE_NAME=$(jq -r .name info.json)
 export PACKAGE_VERSION=$(jq -r .version info.json)
 export PACKAGE_FULL_NAME=$PACKAGE_NAME\_$PACKAGE_VERSION
@@ -10,38 +18,40 @@ echo "Creating Package for $PACKAGE_NAME in version $PACKAGE_VERSION"
 export BUILD_DIR=.build
 export OUTPUT_DIR=$BUILD_DIR/$PACKAGE_FULL_NAME
 
-export PNG_FILES="$(find ./graphics -iname '*.png' -type f)"
-
 echo 'Copying package files'
 
 rm -rf .build dist
 mkdir -p $OUTPUT_DIR
 
-find . \
+for F in $(find . \
   -type d \
   \( \
   -iname 'locale' -o \
   -iname 'sounds' \
-  \) \
-  -exec cp -r --parents \{\} $OUTPUT_DIR \;
+  \)); do
+  cp -r --parents $F $OUTPUT_DIR
+done
 
-find . \
-  -type f \
-  \( \
-  -iname '*.md' -o \
-  -iname '*.txt' -o \
-  -iname 'info.json' -o \
-  -iname 'thumbnail.png' \
-  \) \
-  -exec cp --parents \{\} $OUTPUT_DIR \;
+for F in $(
+  find . \
+    -iname '*.md' -o \
+    -iname '*.txt' -o \
+    -iname 'info.json' -o \
+    -iname 'LICENSE' -o
+  -iname 'thumbnail.png'
+); do
+  cp --parents $F $OUTPUT_DIR
+done
 
-find . \
-  -iname '*.lua' -type f -not -path \"./.*/*\" \
-  -exec cp --parents \{\} $OUTPUT_DIR \;
+for F in $(find . \
+  -iname '*.lua' -type f -not -path \"./.*/*\"); do
+  cp --parents $F $OUTPUT_DIR
+done
 
-find ./graphics \
-  -iname '*.png' -type f \
-  -exec cp --parents \{\} $OUTPUT_DIR \;
+for F in $(find ./graphics \
+  -iname '*.png' -type f); do
+  cp --parents $F $OUTPUT_DIR
+done
 
 ORIGIN=$(pwd)
 cd $BUILD_DIR
@@ -55,3 +65,4 @@ mkdir dist/
 cp $BUILD_DIR/$PACKAGE_FILE dist
 
 echo "$PACKAGE_FILE ready at dist/$PACKAGE_FILE"
+echo "::set-output name=asset_path::${INPUT_MOD_BASE_DIR}/dist/${PACKAGE_FILE}"
