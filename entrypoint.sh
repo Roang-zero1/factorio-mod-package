@@ -1,11 +1,14 @@
 #!/bin/sh
 
-cd $INPUT_MOD_BASE_DIR
+if [ -z $INPUT_MOD_BASE_DIR ]; then :; else
+  echo "Changing base dir to $INPUT_MOD_BASE_DIR"
+  cd $INPUT_MOD_BASE_DIR
 
-retVal=$?
-if [ $retVal -ne 0 ]; then
-  echo "::error file=entrypoint.sh,line=6::Failed to switch to provided working directory"
-  exit 1
+  retVal=$?
+  if [ $retVal -ne 0 ]; then
+    echo "::error file=entrypoint.sh,line=6::Failed to switch to provided working directory"
+    exit 1
+  fi
 fi
 
 export PACKAGE_NAME=$(jq -r .name info.json)
@@ -37,8 +40,8 @@ for F in $(
     -iname '*.md' -o \
     -iname '*.txt' -o \
     -iname 'info.json' -o \
-    -iname 'LICENSE' -o
-  -iname 'thumbnail.png'
+    -iname 'LICENSE' -o \
+    -iname 'thumbnail.png'
 ); do
   cp --parents $F $OUTPUT_DIR
 done

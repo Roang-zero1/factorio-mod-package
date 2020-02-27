@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v1.2.1
+
+Bugfixes:
+
+- Make `mod_base_dir` optional
+- Fix missing slash in find command
+
 ## v1.2.0
 
 - Add option to change the working directory (mod_base_dir)
