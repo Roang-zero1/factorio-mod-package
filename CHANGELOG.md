@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.2.2
+
+Bugfixes:
+
+- Fix disabled ENTRYPOINT
+
 ## v1.2.1
 
 Bugfixes:
